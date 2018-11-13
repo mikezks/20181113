@@ -174,3 +174,86 @@ flugInfo.von = 'Graz';
 flugInfo.airportName = 'STR';
 
 console.log(flugInfo);
+
+
+
+abstract class AbsAirplane {
+    static nrAirplanes: number = 0;
+    private _seats?: number;
+    vendor: string = 'Airbus';
+
+    constructor(public type: string) {
+        AbsAirplane.nrAirplanes++;
+    }
+
+    public get seats() {
+        return this._seats || 0;
+    }
+
+    public set seats(nr: number) {
+        this._seats = nr;
+    }
+}
+
+interface Airline {
+    airlineName: string;
+}
+
+class BoeingAirplane extends AbsAirplane implements Airline {
+    vendor: string = 'Boeing';
+    airlineName = 'LH';
+
+    getNrOfBooking(): number {
+        return 47;
+    }
+}
+
+const myAirplane = new BoeingAirplane('777');
+
+myAirplane.seats = 200;
+console.log(myAirplane);
+
+class Logger<T> {
+    constructor(public result: T) {
+    }
+
+    logMsg(): void {
+        console.log('Logger Result Test: ', this.result);
+    }
+}
+
+let myLogger: Logger<string | number | MyFlug> = new Logger<number>(67);
+myLogger.logMsg();
+myLogger = new Logger<string>('mein Error Text');
+myLogger.logMsg();
+
+class MyFlug {
+    static fluege: { delayed: boolean }[] = [];
+    von: string = 'Graz';
+    nach: string;
+
+    constructor(public readonly delayed: boolean) {
+        MyFlug.fluege.push({ delayed });
+    }
+
+    static getDelayed(): number {
+        return MyFlug.fluege.filter(flug => flug.delayed).length;
+    }
+
+    getVon() {
+        return this.von;
+    }
+}
+
+const f1 = new MyFlug(true);
+const f2 = new MyFlug(false);
+const f3 = new MyFlug(true);
+console.log(MyFlug.getDelayed());
+
+console.log(f1.getVon());
+
+f1.delayed = true;
+
+myLogger = new Logger<MyFlug>(f1);
+myLogger.logMsg();
+
