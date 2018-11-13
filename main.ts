@@ -95,4 +95,82 @@ const getAlterByName = (name: string) => {
 
 console.log(getAlterByName('Heinz'));
 
+let newPersonArr: NameWithAge[] = [
+    ...namesArr.slice(1),
+    {
+        vorname: 'Sepp',
+        nachname: 'Obermüller',
+        alter: 67
+    }
+];
 
+const nameProp = {
+    vorname: 'Marie',
+    nachname: 'Maier'
+};
+
+newPersonArr.push({
+    ...nameProp,
+    alter: 11
+});
+
+console.log(newPersonArr);
+
+function showPeople(maxValues: number, ...args: string[]): void {
+    if (args.length <= maxValues) {
+        console.log(args);
+    } else {
+        console.log(`Bitte nicht mehr als ${maxValues} Namen übergeben.`);
+    }
+}
+
+showPeople(3, 'Susi', 'Kerstin', 'Andi');
+
+type MyMap = { [id: number]: string };
+
+const valueMapWithIndex: MyMap = {};
+valueMapWithIndex[19] = 'Mein neuer Wert';
+
+console.log(valueMapWithIndex);
+
+function logName(name: string = 'Maier') {
+    console.log(name);
+}
+
+logName();
+logName('Huber');
+
+const [n1, n2, n3] = namesArr;
+console.log(n1);
+console.log(n2);
+console.log(n3);
+
+function defineVar() {
+    const sepp: NameWithAge = {
+        vorname: 'Sepp',
+        nachname: 'Bender',
+        alter: 12
+    };
+    console.log(sepp);
+}
+
+defineVar();
+//console.log(sepp);
+
+interface Flug {
+    von?: string,
+    nach?: string
+}
+
+interface Airport {
+    airportName?: string
+}
+
+type FlugInfo = Flug & Airport;
+
+const flugInfo: FlugInfo = {};
+flugInfo.nach = 'Stuttgart';
+flugInfo.von = 'Graz';
+flugInfo.airportName = 'STR';
+
+console.log(flugInfo);
