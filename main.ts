@@ -230,7 +230,7 @@ myLogger.logMsg();
 class MyFlug {
     static fluege: { delayed: boolean }[] = [];
     von: string = 'Graz';
-    nach: string;
+    nach: string = '';
 
     constructor(public readonly delayed: boolean) {
         MyFlug.fluege.push({ delayed });
@@ -252,7 +252,7 @@ console.log(MyFlug.getDelayed());
 
 console.log(f1.getVon());
 
-f1.delayed = true;
+//f1.delayed = true;
 
 myLogger = new Logger<MyFlug>(f1);
 myLogger.logMsg();
