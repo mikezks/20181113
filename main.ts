@@ -257,3 +257,4 @@ console.log(f1.getVon());
 myLogger = new Logger<MyFlug>(f1);
 myLogger.logMsg();
 
+console.log('Webpack funktioniert!');
