@@ -1,0 +1,27 @@
+{
+  "name": "20181113",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build:webpack": "webpack -d --watch",
+    "build:webpack:prod": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikezks/20181113.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikezks/20181113/issues"
+  },
+  "homepage": "https://github.com/mikezks/20181113#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.12",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
